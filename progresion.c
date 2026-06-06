@@ -74,12 +74,12 @@ void progression(Cours *li)
   printf(BOLD"Votre pourcentage est de %.2f\n"RESET,finie);
   if(finie < 50)
   {
-  printf("Appreciation : "RED"MAUVAIS"RESET);
+  printf("Appreciation : "RED"MAUVAIS\n"RESET);
   }else if(finie == 50)
   {
-    printf("Appreciation : "GREEN"BIEN"RESET);
+    printf("Appreciation : "GREEN"BIEN\n"RESET);
   }else 
   {
-    printf("Appreciation : "CYAN"EXCELLENT"RESET);
+    printf("Appreciation : "CYAN"EXCELLENT\n"RESET);
   }
 }

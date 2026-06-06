@@ -27,38 +27,34 @@ int main()
     SetConsoleCP(65001);
     int choix;
     Cours *li = NULL;
-  do
-  {
-      printf(BOLD CYAN"\n\n\t\tWELCOME(BIENVENUE)\n"RESET);
-      trace2();
-      printf(YELLOW "\t\t  MENU PRINCIPALE\n" RESET);
-      printf(BOLD"\t"BLUE"  PLATEFORM PEDAGOGIQUE C-LMS"RESET"\n");
-      trace2();
-      printf(BOLD"1-Espace enseignant\n"RESET);
-      printf(BOLD"2-Espace etudiant\n"RESET);
-      printf(BOLD"0-Quitter\n"RESET);
-      trace2();
-      printf("Entrer votre choix : ");
-      scanf("%d",&choix);
-      getchar();
-        switch(choix)
-        {
-         case 0:
-             printf(BOLD"\tAurevoir"GOODBYE"\n" RESET);
-             printf(BOLD"\tEND\\FIN\n\n"RESET);
-              break;
-         case 1:  
-             li = menuEnseignant(li);
-              break;
-
-          case 2:
-             li = menuEtudiant(li);
-              break;
-          default: 
-             printf("choix invallide.\n");
+    printf(BOLD CYAN"\n\t\tBIENVENUE(WELCOME)"SOURIRE"\n"RESET);
+    do
+    {
+    trace2();
+    printf(BOLD MAGENTA"\t\tMENU PRINCIPAL\n"RESET);
+    printf(YELLOW BOLD"     \t PLATFORM PEDAGOGIQUE C-LMS\n"RESET);
+    trace2();
+    printf(BOLD"1-Espace enseignant\n"RESET);
+    printf(BOLD"2-Espace etudiant\n"RESET);
+    printf(BOLD"0-Quitter\n"RESET);
+    trace2();
+    printf("Entrer votre choix :");
+    scanf("%d",&choix);
+         switch(choix)
+         {
+          case 0:
+             printf(BOLD CYAN"\tMerci(Thanks)"RESET);
              break;
+          case 1:
+             li = menuEnseignant(li);
+               break;
+          case 2:
+              li = menuEtudiant(li);
+              break;
+            default :
+            printf("Choix invallide.\n");
+              break;
          }
-    }while(choix !=  0);
-
-   return 0; 
+    }while(choix != 0);
+    return 0;
 }

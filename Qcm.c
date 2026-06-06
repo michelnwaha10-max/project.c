@@ -32,9 +32,10 @@ if(li == NULL)
     }
   affichertous(li);
    char id[20];
-  printf("\t Entrer l'identifiant du cours dans le quel vous souhaitais ajouter un qcm :");
+  printf("\t Entrer l'identifiant de la lecon dans le quel vous souhaitais ajouter un qcm :");
   fgets(id,20,stdin);
   id[strcspn(id,"\n")] = 0;
+
   Lecon *l = li->p_chapitre->p_lecon;
   Lecon *nouv ;
 
@@ -45,7 +46,7 @@ if(li == NULL)
     printf(RED"\t La lecon nexiste pas .\n"RESET);
   }else
   {
-    creationQuestion(nouv->p_qcm);
+    nouv->p_qcm = creationQuestion(nouv->p_qcm);
      printf(BOLD CYAN"\tQCM cree avec success."GOOD"\n"RESET);
      trace1();
   }

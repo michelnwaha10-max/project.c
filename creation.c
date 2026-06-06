@@ -33,7 +33,7 @@ trace1();
     trace1();
     return l;
   }
-  printf("\tEntrer le nom de l'UE :");
+  printf("\tEntrer le nom du cours :");
   fgets(nouv->nom,30,stdin);
   nouv->nom[strcspn(nouv->nom,"\n")] = 0;
 
@@ -47,7 +47,7 @@ trace1();
   if(l == NULL)
    {
      l = nouv;
-      printf(BOLD CYAN"\tUE cree avec success."GOOD"\n"RESET);
+      printf(BOLD CYAN"\tCours cree avec success."GOOD"\n"RESET);
       trace1();
    }else
    {
@@ -75,7 +75,7 @@ Cours *creationchapitre(Cours *li)
    }
    affichercours(li);
   char chap[50];
-  printf("\tEntrer l'UE a la quelle vous voulez ajouter un chapitre :");
+  printf("\tEntrer le nom du cours dans le quel vous voulez ajouter un chapitre :");
   fgets(chap,50,stdin);
   chap[strcspn(chap,"\n")] = 0;
 
@@ -123,19 +123,20 @@ Cours *creationlecon(Cours *li)
   Cours * pi = li;
   if(pi == NULL)
   {
-    printf(RED"\tAucune UE pour le moment .\n"RESET);
+    printf(RED"\tAucune cours pour le moment .\n"RESET);
     trace1();
     return li;
   }
 
   char nom1[50];
   Cours *l ;
-  printf("\tEntrer le nom de l'UE :");
+  printf("\tEntrer le nom du cours :");
   fgets(nom1,50,stdin);
   nom1[strcspn(nom1,"\n")] = 0;
   l=trouvercours(pi,nom1);
   if(l == NULL)
   {
+    printf(RED"\tLe cours %s n'existe pas.\n"RESET,l->nom);
     trace1();
     return li;
   }else
@@ -157,6 +158,7 @@ Cours *creationlecon(Cours *li)
   cp = trouverchapitre(b,nom);
   if(cp == NULL)
   {
+    printf(RED"Le chapitre %s n'existe pas.\n"RESET,cp->titre);
     trace1();
    return li;
   }else
@@ -176,6 +178,7 @@ Cours *creationlecon(Cours *li)
     l->contenu[strcspn(l->contenu,"\n")] = 0;
 
     l->terminee = 0;
+    l->p_qcm = NULL;
     l->suiv = NULL;
     if(cp->p_lecon == NULL)
     {

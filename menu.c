@@ -3,6 +3,7 @@
 #include <conio.h>
 #include "sylabus.h"
 #include <string.h>
+#include <stdlib.h>
 #include <windows.h>
 
 #define BLUE "\033[0;34m"
@@ -28,9 +29,9 @@ Cours *menuEnseignant(Cours *li)
     int choix1,choix2,choix3;
     do
             {
-                trace2();
+              trace3();
               printf(YELLOW BOLD"\t\tEspace Enseignant\n"RESET);
-              trace2();
+              trace3();
               printf(BOLD"\t1-Creer/Ajouter un cours\n"RESET);
               printf(BOLD"\t2-Cree/Ajouter un chapitre a un cours\n"RESET);
               printf(BOLD"\t3-Creer/Ajouter une lecon dans un chapitre\n"RESET);
@@ -38,8 +39,9 @@ Cours *menuEnseignant(Cours *li)
               printf(BOLD"\t5-Visualiser la structure complet\n"RESET);
               printf(BOLD"\t6-Modifier\n"RESET);
               printf(BOLD"\t7-Supprimer\n"RESET);
+              printf(BOLD"\t8-Sauvegarder les donnes\n"RESET);
               printf(BOLD"\t0-Retour au menu principale\n"RESET);
-              trace2();
+              trace3();
               printf(BOLD"\tEntrer votre choix : "RESET);
               scanf("%d",&choix1);
                getchar();
@@ -97,7 +99,7 @@ Cours *menuEnseignant(Cours *li)
                             }
                           }while(choix2 != 0);
                        break;
-                       case 7:
+                    case 7:
                           do
                           {
                             trace1();
@@ -114,7 +116,7 @@ Cours *menuEnseignant(Cours *li)
                             switch(choix3)
                             {
                               case 0:
-                                printf(CYAN BOLD"\tRetour.\n"RESET);
+                                printf(CYAN BOLD"\tRetour a l'espace enseignant.\n"RESET);
                               break;
                               case 1:
                                 li = supprimerCours(li);
@@ -128,11 +130,14 @@ Cours *menuEnseignant(Cours *li)
                             default:
                               printf(RED"\tChoix invalide.\n"RESET);
                               break;
-                            }
-                          }while(choix3 != 0);
-                      default :
-                      printf(RED"\tchoix invallide.\n"RESET);
-                         break;
+                             }
+                            }while(choix3 != 0);
+                            default :
+                            printf(RED"\tchoix invallide.\n"RESET);
+                            break;
+                    case 8:
+                       sauvegardeListe(li);
+                        break;                                                   
                 }
               }while(choix1 != 0);
     return li;
@@ -144,14 +149,14 @@ Cours *menuEtudiant(Cours *li)
     int choix2;
     do
                 {
-                    trace2();
+                    trace3();
                     printf(YELLOW BOLD"\t\tEspace Etudiant\n"RESET);
-                    trace2();
+                    trace3();
                     printf(BOLD"\t1-Voir tous les cours disponible\n"RESET);
                     printf(BOLD"\t2-Lire une un cours et passer un Qcm si present \n"RESET);
                     printf(BOLD"\t3-Voir sa progreession\n"RESET);
                     printf(BOLD"\t0-Retour au menu principale.\n"RESET);
-                    trace2();
+                    trace3();
                     printf(BOLD"\tEntrer votre choix : "RESET);
                     scanf("%d",&choix2);
                     getchar();
@@ -164,7 +169,7 @@ Cours *menuEtudiant(Cours *li)
                       affichertous(li);
                       break;
                       case 2:
-                          affichertous(li);
+                          affichercours(li);
                            printf("\tEntrer le nom du cours que vous voulez lire :");
                             char nom3[50];
                             fgets(nom3,50,stdin);

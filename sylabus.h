@@ -62,6 +62,7 @@ void progression(Cours *li);
 
 void trace2();
 void trace1();
+void trace3();
 
 Cours *qcms(Cours *li);
 
@@ -77,4 +78,6 @@ Qcm *repondreQcm(Qcm *li);
 
 Cours *menuEnseignant(Cours *li);
 Cours *menuEtudiant(Cours *li);
+
+void sauvegardeListe(Cours *li);
 #endif

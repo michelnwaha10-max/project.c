@@ -1,0 +1,23 @@
+{
+  "Cours": [
+    {
+      "id_cours": 1,
+      "nom": "inf 111",
+      "enseignant": "pr atsa",
+      "chapitres": [
+        {
+          "id_chapitre": 1,
+          "titre": "Les arbres",
+          "lecons": [
+            {
+              "id_lecon": 1,
+              "code": "L01",
+              "titre": "Introduction aux arbres",
+              "contenu": "Dans la foret lointaine on entend le coucou du haut de son grand chene il repond au hibbou, coucou hibou coucou hibbou coucou hibbou coucou."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

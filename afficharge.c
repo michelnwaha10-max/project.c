@@ -27,7 +27,7 @@ void affichercours(Cours *li)
     Cours *tmp = li;
     if(tmp == NULL)
     {
-        printf(RED"\tAucune UE exist.\n"RESET);
+        printf(RED"\tAucune cours exist.\n"RESET);
         trace1();
         return;
     }
@@ -36,7 +36,7 @@ void affichercours(Cours *li)
     while(tmp != NULL)
     {
         printf("Cours %d\n", p);
-        printf("\tNom de l'UE :" BOLD"%s\n" RESET,tmp->nom);
+        printf("\tNom du cours :" BOLD"%s\n" RESET,tmp->nom);
         printf("\tNom de l'enseignant : "BOLD"%s\n\n"RESET,tmp->nom_e);
         p++;
         tmp = tmp->suiv;
@@ -79,7 +79,6 @@ void afficherchapitre(Cours *li)
 //afficher lecon
 void afficherlecon(Cours *li)
 {
-    printf("--------"BOLD"LISTE DES LECON"RESET"---------\n");
     trace1();
     if(li == NULL || li->p_chapitre == NULL)
     {
@@ -95,6 +94,8 @@ void afficherlecon(Cours *li)
         trace1();
         return ;
     }
+
+    printf("--------"BOLD"LISTE DES LECON"RESET"---------\n");
 
     int p = 1;
     while(l != NULL)
@@ -119,7 +120,6 @@ void affichertous(Cours *li)
 {
     trace1();
     Cours *c = li;
-    printf("\t----------"BROWN"LISTE COMPLETE DES COURS"RESET"--------------\n");
     if(c == NULL)
     {
       printf(RED"\tAucun cours pour le moment.\n"RESET);
@@ -127,9 +127,10 @@ void affichertous(Cours *li)
        return;
     }else
     {
+    printf("\t----------"BROWN"LISTE COMPLETE DES COURS"RESET"--------------\n");       
       while(c != NULL)
        {
-          printf("\t  UE :"BOLD" %s\n"RESET,c->nom);        
+          printf("\t  Cours :"BOLD" %s\n"RESET,c->nom);        
           printf("\tEnseignant : "BOLD"%s\n"RESET,c->nom_e);
           Chapitre *r = c->p_chapitre;
            if(r == NULL)
@@ -183,7 +184,7 @@ Cours *afficherCoursPasserQcm(Cours *li,char nom[50])
         printf(RED"\tCe cours n'existe pas."RESET);
         return li;
     }
-     printf("UE : "BOLD"%s\n"RESET,t->nom);
+     printf("Cours : "BOLD"%s\n"RESET,t->nom);
      printf("Enseignat :"BOLD" %s\n"RESET,t->nom_e);
      if(t->p_chapitre == NULL)
      {
@@ -208,23 +209,28 @@ Cours *afficherCoursPasserQcm(Cours *li,char nom[50])
        printf("%s\n",lc->contenu);
 
     char reponse;
+    Qcm *qcm= lc->p_qcm;
+
+
     printf("\tVoulez vous faire les Qcm pour terminer le lecon (o/n):");
     scanf("%c",&reponse);
     getchar();
-    if(reponse != 'o' || reponse != 'O')
+    if(reponse == 'o' || reponse == 'O')
     {
-      printf(RED"La lecon n'est pas terminer.\n"RESET);
+     if(qcm != NULL)
+     {
+            repondreQcm(qcm);
+            printf(GREEN"Lecon terminer.\n"RESET);
+            lc->terminee = 1;
+     }else
+     {
+        printf(RED"\tAucun qcm enregistre pour cette lecon.\n"RESET);
+     }    
     }else
     {
-    Qcm *tmp = lc->p_qcm;
-       if(lc->p_qcm != NULL)
-        {
-          repondreQcm(tmp);
-          printf(GREEN"Lecon terminer.\n"RESET);
-            lc->terminee = 1;
-         }   
+        printf(RED"\tLa lecon n'est pas terminer.\n"RESET);
     }
-
+    
        lc = lc->suiv;
       }
      }
